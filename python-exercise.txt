@@ -1,0 +1,29 @@
+python
+
+dicts={}
+import urllib2
+
+url = 'https://s3-eu-west-1.amazonaws.com/fs-downloads/GM/binfeed.ical'
+
+response = urllib2.urlopen(url)
+
+
+gcal = Calendar.from_ical(response.read())
+for component in gcal.walk():
+    if component.name == "VEVENT":
+        print(component.get('UID'))
+        dstart=(component.get('DTSTART'))
+
+        summary=(component.get('SUMMARY'))
+        print(component.get('dtstamp'))
+dicts[DSTART] = values[SUMMARY]
+
+
+
+
+g.close()
+
+
+for key, value in dicts.items():
+    try:reverse_dict[value].append(key)
+    except:reverse_dict[value] = [key]
